@@ -58,4 +58,68 @@ const getSingle = async (req, res, next) => {
   }
 };
 
-module.exports = { getAll, getSingle };
+const createContact = async (req, res) => {
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+ const reponse = await mongodb
+      .getDatabase()
+      .db(process.env.MONGODB_DB)
+      .collection('contacts')
+    .insertOne(contact);
+  if (reponse.acknowledged) {
+    res.status(204).send;
+  } else {
+    res.status(500).json(reponse.error || 'some error occured while updating the user');
+  }
+
+ 
+};
+
+const updateContact = async (req, res) => {
+   const ObjectId = require('mongodb').ObjectId;
+   const contact = {
+     firstName: req.body.firstName,
+     lastName: req.body.lastName,
+     email: req.body.email,
+     favoriteColor: req.body.favoriteColor,
+     birthday: req.body.birthday
+   };
+   const response = await mongodb
+        .getDatabase()
+        .db(process.env.MONGODB_DB)
+        .collection('contacts')
+     .replaceOne({_id: new ObjectId(req.params.id)}, contact);
+   if (response.modifiedCount > 0) {
+     res.status(204).send();
+   } else {
+     res.status(500).json(response.error || 'Some error occurred while updating the user');
+   }
+
+ 
+};
+
+const deleteContact = async (req, res) => {
+   const ObjectId = require('mongodb').ObjectId;
+  
+   const response = await mongodb
+        .getDatabase()
+        .db(process.env.MONGODB_DB)
+        .collection('contacts')
+    .deleteOne({_id: new ObjectId(req.params.id)});
+    if (response.deletedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'Some error occurred while deleting the user');
+    }
+
+ 
+};
+
+
+
+module.exports = { getAll, getSingle, createContact, updateContact, deleteContact };

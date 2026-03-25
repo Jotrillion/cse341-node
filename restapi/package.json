@@ -1,11 +1,11 @@
 {
-  "name": "cse341project1",
+  "name": "restapi",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -13,12 +13,7 @@
   "type": "commonjs",
   "dependencies": {
     "body-parser": "^2.2.2",
-    "express": "^5.2.1",
-    "mongoose": "^9.2.4",
-    "swagger-ui-express": "^5.0.1",
-    "yaml": "^2.8.3"
-  },
-  "devDependencies": {
-    "swagger-autogen": "^2.23.7"
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
   }
 }
