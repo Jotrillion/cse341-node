@@ -1,5 +1,6 @@
 ### Get all items
 GET http://localhost:3000/api/items
+Accept: application/json
 
 ### Create a new item
 POST http://localhost:3000/api/items
@@ -7,6 +8,20 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "name": "Sample Item",
-  "description": "This is a test item."
+  "name": "sample Item",
+  "description": "This is a sample item."
 }
+
+### Update an item (replace :id with a real item id)
+PUT http://localhost:3000/api/items/69c858705cdf4585e050911e
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Updated sample Item",
+  "description": "This item has been updated."
+}
+
+### Delete an item (replace :id with a real item id)
+DELETE http://localhost:3000/api/items/69c86642f80fe37cec92c587
+Accept: application/json
