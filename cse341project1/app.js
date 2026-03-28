@@ -11,7 +11,6 @@ var options = {
   }
 };
 
-
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 const PORT = process.env.PORT || 3000;
