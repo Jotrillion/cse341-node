@@ -11,7 +11,87 @@
     }
   ],
   "paths": {
-    "/items": {
+    "/contacts": {
+      "get": {
+        "summary": "Get all contacts",
+        "responses": {
+          "200": {
+            "description": "A list of contacts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Contact" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new contact",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ContactInput" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Contact created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Contact" }
+              }
+            }
+          },
+          "400": { "description": "Validation error" }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "summary": "Get a contact by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Contact ID" }
+        ],
+        "responses": {
+          "200": { "description": "Contact found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Contact" } } } },
+          "404": { "description": "Contact not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a contact by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Contact ID" }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ContactInput" }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Contact updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Contact" } } } },
+          "400": { "description": "Validation error" },
+          "404": { "description": "Contact not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a contact by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Contact ID" }
+        ],
+        "responses": {
+          "204": { "description": "Contact deleted" },
+          "404": { "description": "Contact not found" }
+        }
+      }
+    },
       "get": {
         "summary": "Get all items",
         "responses": {
@@ -113,6 +193,34 @@
   },
   "components": {
     "schemas": {
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string", "description": "Contact ID" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "phone": { "type": "string" },
+          "address": { "type": "string" },
+          "city": { "type": "string" },
+          "zip": { "type": "string" },
+          "birthday": { "type": "string" }
+        }
+      },
+      "ContactInput": {
+        "type": "object",
+        "properties": {
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "phone": { "type": "string" },
+          "address": { "type": "string" },
+          "city": { "type": "string" },
+          "zip": { "type": "string" },
+          "birthday": { "type": "string" }
+        },
+        "required": ["firstName", "lastName", "email", "phone", "address", "city", "zip", "birthday"]
+      },
       "Item": {
         "type": "object",
         "properties": {
