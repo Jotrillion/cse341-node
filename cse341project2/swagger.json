@@ -1,7 +1,5 @@
-{
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Items API",
+      }
+    }
     "version": "1.0.0",
     "description": "API documentation for items management."
   },
