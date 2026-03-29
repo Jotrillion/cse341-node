@@ -58,6 +58,8 @@
           }
         }
       },
+    },
+    "/items/{id}": {
       "put": {
         "summary": "Update an item",
         "parameters": [
