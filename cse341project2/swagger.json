@@ -57,7 +57,7 @@
             "description": "Invalid input"
           }
         }
-      },
+      }
     },
     "/items/{id}": {
       "put": {
