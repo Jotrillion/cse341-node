@@ -1,0 +1,71 @@
+### Create a new contact
+POST http://localhost:3000/api/contacts
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Joe",
+  "lastName": "Doea",
+  "email": "joe.doe@example.com",
+  "phone": "123-458-7890",
+  "address": "123 Main St",
+  "city": "Anytown",
+  "zip": "12345",
+  "birthday": "1997-11-07"
+}
+
+### Get all contacts
+GET http://localhost:3000/api/contacts
+Accept: application/json
+
+### Get a contact by ID
+GET http://localhost:3000/api/contacts/69c988d29e6faa1f090cb065
+Accept: application/json
+
+### Update a contact by ID
+PUT http://localhost:3000/api/contacts/669c86538f80fe37cec92c586
+Content-Type: application/json
+Accept: application/json
+
+{
+    
+    "firstName": "Joella",
+    "lastName": "Doea",
+    "email": "joella.doe@example.com",
+    "phone": "123-458-7890",
+    "address": "123 Main St",
+    "city": "Anytown",
+    "zip": "12345",
+    "birthday": "1996-11-01"
+  }
+
+### Delete a contact by ID
+DELETE http://localhost:3000/api/contacts/69c98b8a9e6faa1f090cb067
+Accept: application/json
+### Get all items
+GET http://localhost:3000/api/items
+Accept: application/json
+
+### Create a new item
+POST http://localhost:3000/api/items
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "double Item",
+  "description": "This is a sample double item."
+}
+
+### Update an item (replace :id with a real item id)
+PUT http://localhost:3000/api/items/69c86538f80fe37cec92c586
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Updated old Item",
+  "description": "This item has been updated."
+}
+
+### Delete an item (replace :id with a real item id)
+DELETE http://localhost:3000/api/items/69c98e4e9e6faa1f090cb069
+Accept: application/json
