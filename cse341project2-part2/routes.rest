@@ -23,15 +23,15 @@ GET http://localhost:3000/api/contacts/69c988d29e6faa1f090cb065
 Accept: application/json
 
 ### Update a contact by ID
-PUT http://localhost:3000/api/contacts/669c86538f80fe37cec92c586
+PUT http://localhost:3000/api/contacts/69cb5cd432c845563fd45708
 Content-Type: application/json
 Accept: application/json
 
 {
     
-    "firstName": "Joella",
+    "firstName": "Joellana",
     "lastName": "Doea",
-    "email": "joella.doe@example.com",
+    "email": "joellana.doe@example.com",
     "phone": "123-458-7890",
     "address": "123 Main St",
     "city": "Anytown",
@@ -67,5 +67,5 @@ Accept: application/json
 }
 
 ### Delete an item (replace :id with a real item id)
-DELETE http://localhost:3000/api/items/69c98e4e9e6faa1f090cb069
+DELETE http://localhost:3000/api/items/69c989719e6faa1f090cb066
 Accept: application/json
