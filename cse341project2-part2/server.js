@@ -17,7 +17,10 @@ const swaggerDocument = require('./swagger.json');
 
 
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
 app.use(express.json());
 app.use(bodyparser.json());
 
@@ -40,10 +43,9 @@ app.use(passport.session());
 // })
 //})
 
-  app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }))
-  .use(cors({ origin: '*' }))
+// ...existing code...
 
-  .use('/', require('./routes/index.js'));
+app.use('/', require('./routes/index.js'));
 
 // GitHub OAuth login route (must be after app and passport are initialized)
 app.get('/login', passport.authenticate('github'));
